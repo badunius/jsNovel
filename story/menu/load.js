@@ -20,7 +20,7 @@ export const MENU_LOAD = {
     actions: [
         {
             caption: 'Cancel',
-            handler: () => 'MENU_MAIN'
+            handler: () => ({scene: 'MENU_MAIN'})
         }
     ]
 }

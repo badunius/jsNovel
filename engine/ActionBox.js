@@ -6,15 +6,14 @@ export class ActionBox {
         this.engine = engine;
     }
 
-    listActions() {
+    listActions(list) {
         const scene = this.engine.scene;
-        const list = scene.actions;
         // clearing up first
         this.cont.innerHTML = '';
         list.forEach(element => {
             let button = this.cont.cel('button');
             button.textContent = element.caption;
-            button.onclick = () => this.engine.setScene(
+            button.onclick = () => this.engine.performAction(
                 element.handler(scene)
             );
         });

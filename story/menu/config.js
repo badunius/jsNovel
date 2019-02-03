@@ -13,7 +13,7 @@ export const MENU_CONFIG = {
     actions: [
         {
             caption: 'Cancel',
-            handler: () => 'MENU_MAIN'
+            handler: () => ({scene: 'MENU_MAIN'})
         }
     ]
 }
