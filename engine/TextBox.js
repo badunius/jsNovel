@@ -10,7 +10,7 @@ export class TextBox {
         this.cont.innerHTML = '';
     }
 
-    putText(lines) {
+    putText(lines, scene) {
         // lines is supposed to be an array of objects
         lines.forEach(element => {
             const key = Object.keys(element)[0];
@@ -19,7 +19,9 @@ export class TextBox {
             //const tagged = data.replace(/\%(\S+?)\%/gi, (full, group) => eval('`${' + group + '}`'))
             // The thing is we are supposed to fetch data from context. No exceptions.
             // If you want to call a function - write a getter
-            const tagged = data.replace(/\%(\S+?)\%/gi, (full, group) => this.context[group])
+            //const tagged = data.replace(/\%(\S+?)\%/gi, (full, group) => this.context[group])
+            // *Sigh* rolling back as we need to work with multi-leveling
+            const tagged = data.replace(/\%(\S+?)\%/gi, (full, group) => eval('`${this.context.' + group + '}`'))
             switch(key) {
                 case 'p':
                     this.cont.cel('p').innerHTML = tagged;//data;
@@ -35,7 +37,7 @@ export class TextBox {
                     break;
                 case 'input':
                     this.cont.cel('input', '', data).oninput = (e) => { 
-                        this.context[data] = e.target.value;
+                        scene.store[data] = e.target.value;
                     };
                     break;
                 default:

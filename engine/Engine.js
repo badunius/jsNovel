@@ -71,16 +71,47 @@ export class Engine {
         this.currentScene = sceneName;
         // looking for a new scene
         this.scene = Object.assign(this.story[sceneName]);
+        this.scene.store = {};
         // adding a context
-        this.scene.context = this.context;
+        this.scene.context = Object.assign(this.context);
         // if this scene have a before handler - running it
         if (this.scene.before) {
             this.scene.before();
         }
         // displaying it
+        console.info('Displaying a scene: %o', this.scene)
         this.text.clear();
-        this.text.putText(this.scene.description);
+        this.text.putText(this.scene.description, this.scene);
         this.icon.setImage(this.scene.icon);
-        this.actions.listActions();
+        this.actions.listActions(this.scene.actions);
+    }
+
+    performAction(action) {
+        // we're expectin to have a mixed set of fields
+        // context: object -- to update context
+        // saveTo: string -- to save current progress
+        // scene: string -- to switch to new scene
+        // actions: array -- to update list of actions
+        console.log('performing action: %o', action)
+        // 1
+        if (action.context) {
+            this.context = Object.assign(this.context, action.context);
+        }
+
+        // 2
+        if (action.saveTo) {
+            // TODO
+        }
+
+        // 3
+        if (action.scene) {
+            this.setScene(action.scene);
+        }
+
+        // 4
+        if (action.actions) {
+            this.actions.listActions(action.actions);
+        }
+        console.info('actual context: %o', this.context)
     }
 }

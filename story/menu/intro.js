@@ -12,11 +12,18 @@ export const MENU_INTRO = {
     actions: [
         {
             caption: 'Next',
-            handler: () => 'GAME_WELCOME'
+            handler: (e) => ({
+                scene: 'GAME_WELCOME',
+                context: {
+                    player: {
+                        name: e.store.playerName
+                    }
+                }
+            })
         },
         {
             caption: 'Cancel',
-            handler: () => 'MENU_MAIN'
+            handler: () => ({scene: 'MENU_MAIN'})
         }
     ]
 }

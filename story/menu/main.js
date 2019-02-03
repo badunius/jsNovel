@@ -13,19 +13,19 @@ export const MENU_MAIN = {
     actions: [
         {
             caption: 'Start',
-            handler: () => 'MENU_INTRO'
+            handler: () => ({scene: 'MENU_INTRO'})
         },
         {
             caption: 'Load',
-            handler: () => 'MENU_LOAD'
+            handler: () => ({scene: 'MENU_LOAD'})
         },
         {
             caption: 'Config',
-            handler: () => 'MENU_CONFIG'
+            handler: () => ({scene: 'MENU_CONFIG'})
         },
         {
             caption: 'About',
-            handler: (scene) => 'MENU_ABOUT'
+            handler: (scene) => ({scene: 'MENU_ABOUT'})
         }
     ]
 }

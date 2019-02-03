@@ -3,7 +3,7 @@ export const GAME_WELCOME = {
     get description () {
         // we can access a context at this point
         return [
-            {'p': 'Hello, %playerName%, and welcome... no, not the City-17 you fool...'}
+            {'p': 'Hello, %player.name%, and welcome... no, not to the City-17 you fool...'}
         ];
     },
     // this is an icon above the actions
@@ -12,7 +12,7 @@ export const GAME_WELCOME = {
     actions: [
         {
             caption: '...',
-            handler: () => {}
+            handler: () => ({})
         }
     ]
 }
