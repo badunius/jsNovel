@@ -88,29 +88,39 @@ export class Engine {
 
     performAction(action) {
         // we're expectin to have a mixed set of fields
+        // config: object -- to update configuration
         // context: object -- to update context
-        // saveTo: string -- to save current progress
         // scene: string -- to switch to new scene
         // actions: array -- to update list of actions
         console.log('performing action: %o', action)
-        // 1
+        // updating config
+        if (action.config) {
+            // TODO
+        }
+        
+        // updating context
         if (action.context) {
             this.context = Object.assign(this.context, action.context);
         }
 
-        // 2
-        if (action.saveTo) {
-            // TODO
-        }
-
-        // 3
+        // updating scene
         if (action.scene) {
             this.setScene(action.scene);
         }
 
-        // 4
+        // updating action list
         if (action.actions) {
             this.actions.listActions(action.actions);
+        }
+
+        // updating userpic
+        if (action.avatar) {
+            // TODO
+        }
+
+        // updating user stats
+        if (action.stats) {
+            // TODO
         }
         console.info('actual context: %o', this.context)
     }
