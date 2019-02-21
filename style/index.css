@@ -50,10 +50,74 @@ body {
     background-position: center center;
 }
 
-.info {
+/* InfoBox styles */
+.stats {
     grid-area: info;
+    display: grid;
 }
 
+.land .stats {  
+    overflow-y: auto;
+    grid-auto-rows: 8vmin;
+    grid-column-gap: 1.5625vmin;
+    grid-auto-flow: row;
+}
+
+.port .stats {    
+    margin: 1.5625vmin 1.5625vmin 1.5625vmin 0px;
+    overflow-x: auto;
+    white-space: nowrap;
+    grid-auto-columns: 21.875vmin;
+    grid-column-gap: 1.5625vmin;
+    grid-auto-rows: 21.875vmin;
+    grid-auto-flow: column;
+}
+
+.stats .item {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.stats .item .name {
+    font-weight: bold;
+}
+
+.stats .item .name::after {
+    content: ': ';
+}
+
+/* stat item in landscape mode */
+.land .stats .item {
+    font-weight: bold;
+    display: grid;
+}
+
+/* stat item in portrait mode */
+.port .stats .item {
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.port .stats .item .name,
+.port .stats .item .value,
+.port .stats .item .cap {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.port .stats .item .name::after {
+    content: ': ';
+}
+
+.port .stats .item .icon {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+/* ActionList styles */
 .actions {
     grid-area: actions;
     display: grid;
@@ -80,18 +144,12 @@ body {
 .actions button {
     font-size: 4vmin;
     font-weight: 900;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ''/* ellipsis */;
 }
 
-/* .land .actions button {
-    height: 8vmin;
-    width: 100%;
-}
-
-.port .actions button {
-    height: 100%;
-    min-width: 25vmin;
-} */
-
+/* TextBox styles */
 .text {
     grid-area: text;
     margin: 1.5625vmin;
@@ -108,7 +166,9 @@ body {
 .text input {
 	display: block;
 	margin: 16px 0px;
-	width: 100%;
+    width: 100%;
+    font-size: 3.125vmin;
+    padding: 0.390625vmin;
 }
 
 .crisp {
