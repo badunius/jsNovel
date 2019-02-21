@@ -1,3 +1,5 @@
+import { Player } from "../classes/Player.js";
+
 export const MENU_INTRO = {
     // GETTING READY TO START A NEW GAME
     get description () {
@@ -15,9 +17,7 @@ export const MENU_INTRO = {
             handler: (e) => ({
                 scene: 'GAME_WELCOME',
                 context: {
-                    player: {
-                        name: e.store.playerName
-                    }
+                    player: new Player(e.store.playerName)
                 }
             })
         },

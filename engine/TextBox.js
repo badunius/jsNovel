@@ -14,6 +14,8 @@ export class TextBox {
         // lines is supposed to be an array of objects
         lines.forEach(element => {
             const key = Object.keys(element)[0];
+            const tag = key.split(':')[0];
+            const classes = key.split(':').slice(1).join(' ').trim()
             const data = element[key];
             // (deprecated)       replacing %tag% with an evaluation of ${tag}      
             //const tagged = data.replace(/\%(\S+?)\%/gi, (full, group) => eval('`${' + group + '}`'))

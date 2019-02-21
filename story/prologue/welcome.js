@@ -38,22 +38,22 @@ const phrases = {
 
 const answers = {
     0: [{
-        caption: '...',
-        handler: () => ({ context: {dialog: 100}, scene: 'GAME_WELCOME'})
+        caption: '…',
+        handler: (e) => ({ context: {dialog: 100}, scene: 'GAME_WELCOME', stats: e.context.player.getStats()})
     }],
     
     100: [{
-        caption: 'Infinity?',
-        handler: () => ({ context: {dialog: 200}, scene: 'GAME_WELCOME'})
+        caption: 'Infinity',
+        handler: (e) => ({ context: {dialog: 200}, scene: 'GAME_WELCOME', stats: e.context.player.getStats()})
     }],
     
     200: [{
-        caption: 'Where?',
-        handler: () => ({ context: {dialog: 300}, scene: 'GAME_WELCOME'})
+        caption: 'Where to?',
+        handler: (e) => ({ context: {dialog: 300}, scene: 'GAME_WELCOME',  stats: e.context.player.getStats()})
     }],
     
     300: [{
-        caption: 'Just go',
-        handler: () => ({ context: {dialog: null}, scene: 'GAME_WILDERNESS' })
+        caption: 'Leave',
+        handler: (e) => ({ context: {dialog: null}, scene: 'GAME_WILDERNESS', stats: e.context.player.getStats()})
     }]
 }
